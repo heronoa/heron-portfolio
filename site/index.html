@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="pt-BR" data-default-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Heron Amaral, backend e infraestrutura</title>
+  <meta name="description" content="Desenvolvedor backend em Belém. NestJS, TypeScript, PostgreSQL, Redis e infraestrutura como código, com decisões documentadas e medidas.">
+  <link rel="canonical" href="https://heronoa.com.br/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://heronoa.com.br/">
+  <meta property="og:title" content="Heron Amaral, backend e infraestrutura">
+  <meta property="og:description" content="NestJS, TypeScript, PostgreSQL e infraestrutura como código. Estudos de caso contados como replays, com os desenhos de arquitetura.">
+  <meta property="og:image" content="https://heronoa.com.br/og.png">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#15131D">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="fonts/chakra-petch-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="cf-analytics-token" content="">
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+<svg class="defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><marker id="mk-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="d-head" d="M0,1 L9,5 L0,9 z"/></marker><marker id="mk-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path class="d-head-red" d="M0,1 L9,5 L0,9 z"/></marker><marker id="mk-dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6"><circle class="d-dot" cx="5" cy="5" r="3.5"/></marker></defs></svg>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<nav class="nav" aria-label="Seções">
+  <div class="wrap">
+    <a class="home" href="#topo">Heron Amaral</a>
+    <ul>
+      <li><a href="#casos">Estudos de caso</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#experiencia">Experiência</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <button type="button" class="theme-btn" aria-pressed="true" data-to-dark="Modo escuro" data-to-light="Modo claro">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M10 3a7 7 0 0 1 0 14z"/></svg>
+      <span class="theme-label">Modo claro</span>
+    </button>
+  </div>
+</nav>
+
+<main id="conteudo">
+  <header class="hero" id="topo">
+    <div class="wrap">
+      <h1>Heron Oliveira Amaral</h1>
+      <p class="lede">Desenvolvedor backend. Escrevo APIs em NestJS e TypeScript, cuido da infraestrutura onde elas rodam e documento por que cada decisão foi tomada.</p>
+      <dl class="status">
+        <div><dt>Foco</dt><dd>Backend e infraestrutura</dd></div>
+        <div><dt>Stack principal</dt><dd>NestJS, PostgreSQL, Redis</dd></div>
+        <div><dt>Base</dt><dd>Belém, PA, trabalho remoto</dd></div>
+        <div><dt>Contato</dt><dd class="live"><a href="mailto:heron.amaral@gmail.com">heron.amaral@gmail.com</a></dd></div>
+      </dl>
+
+      <div class="panel">
+        <div class="stage"><svg class="drawing drawing-hero" viewBox="0 0 960 380" role="img" aria-labelledby="t-1 d-1"><title id="t-1">Visão geral da plataforma educacional em que trabalho</title><desc id="d-1">Painel web em Angular e app em Flutter passam pela Cloudflare até a API NestJS em Docker Swarm na GCP, que usa Keycloak, PostgreSQL e Redis, com alertas no Grafana.</desc><g class="d-node" data-node="web"><rect class="d-box" x="20" y="80" width="160" height="56"/><text class="d-t" x="100.0" y="105.0" text-anchor="middle">Painel web</text><text class="d-s" x="100.0" y="122.0" text-anchor="middle">Angular</text></g><g class="d-node" data-node="app"><rect class="d-box" x="20" y="230" width="160" height="56"/><text class="d-t" x="100.0" y="255.0" text-anchor="middle">App</text><text class="d-s" x="100.0" y="272.0" text-anchor="middle">Flutter</text></g><g class="d-node" data-node="cf"><rect class="d-box" x="240" y="155" width="160" height="56"/><text class="d-t" x="320.0" y="180.0" text-anchor="middle">Cloudflare</text><text class="d-s" x="320.0" y="197.0" text-anchor="middle">proxy e Access</text></g><rect class="d-zone" x="440" y="20" width="500" height="340"/><text class="d-zl" x="452" y="40">GCP, provisionada com Terraform</text><g class="d-node" data-node="kc"><rect class="d-box" x="470" y="70" width="180" height="56"/><text class="d-t" x="560.0" y="95.0" text-anchor="middle">Keycloak</text><text class="d-s" x="560.0" y="112.0" text-anchor="middle">identidade e SSO</text></g><g class="d-node" data-node="api"><rect class="d-box" x="470" y="180" width="180" height="56"/><text class="d-t" x="560.0" y="205.0" text-anchor="middle">API NestJS</text><text class="d-s" x="560.0" y="222.0" text-anchor="middle">réplicas no Swarm</text></g><g class="d-node" data-node="graf"><rect class="d-box" x="470" y="290" width="180" height="56"/><text class="d-t" x="560.0" y="315.0" text-anchor="middle">Grafana</text><text class="d-s" x="560.0" y="332.0" text-anchor="middle">alertas por e-mail</text></g><g class="d-node" data-node="pg"><rect class="d-box" x="720" y="130" width="190" height="56"/><text class="d-t" x="815.0" y="155.0" text-anchor="middle">PostgreSQL</text><text class="d-s" x="815.0" y="172.0" text-anchor="middle">Cloud SQL</text></g><g class="d-node" data-node="redis"><rect class="d-box" x="720" y="240" width="190" height="56"/><text class="d-t" x="815.0" y="265.0" text-anchor="middle">Redis</text><text class="d-s" x="815.0" y="282.0" text-anchor="middle">cache</text></g><polyline class="d-arrow" data-edge="web-cf" points="180,108 210,108 210,175 238,175" marker-end="url(#mk-ink)"/><polyline class="d-arrow" data-edge="app-cf" points="180,258 210,258 210,193 238,193" marker-end="url(#mk-ink)"/><polyline class="d-arrow" data-edge="cf-api" points="400,194 464,208" marker-end="url(#mk-ink)"/><polyline class="d-arrow" data-edge="api-kc" points="560,180 560,132" marker-end="url(#mk-ink)"/><polyline class="d-arrow" data-edge="api-pg" points="650,200 714,165" marker-end="url(#mk-ink)"/><polyline class="d-arrow" data-edge="api-redis" points="650,216 714,260" marker-end="url(#mk-ink)"/><polyline class="d-arrow d-dash" data-edge="graf-api" points="560,290 560,242" marker-end="url(#mk-ink)"/><polyline class="d-lead" points="650,82 686,78" marker-start="url(#mk-dot)"/><text class="d-n" x="680" y="72" text-anchor="start">login único entregue em 14 dias</text><polyline class="d-lead" points="500,238 456,299" marker-start="url(#mk-dot)"/><text class="d-n" x="462" y="312" text-anchor="end">110 testes e2e cobrem a API</text></svg><svg class="drawing drawing-hero-m" viewBox="0 0 340 440" role="img" aria-labelledby="t-2 d-2"><title id="t-2">Visão geral da plataforma educacional em que trabalho</title><desc id="d-2">Painel web e app passam pela Cloudflare até a API NestJS na GCP, que usa Keycloak, PostgreSQL e Redis.</desc><g class="d-node" data-node="web"><rect class="d-box" x="15" y="15" width="145" height="52"/><text class="d-t" x="87.5" y="38.0" text-anchor="middle">Painel web</text><text class="d-s" x="87.5" y="55.0" text-anchor="middle">Angular</text></g><g class="d-node" data-node="app"><rect class="d-box" x="180" y="15" width="145" height="52"/><text class="d-t" x="252.5" y="38.0" text-anchor="middle">App</text><text class="d-s" x="252.5" y="55.0" text-anchor="middle">Flutter</text></g><g class="d-node" data-node="cf"><rect class="d-box" x="90" y="110" width="160" height="52"/><text class="d-t" x="170.0" y="133.0" text-anchor="middle">Cloudflare</text><text class="d-s" x="170.0" y="150.0" text-anchor="middle">proxy e Access</text></g><polyline class="d-arrow" data-edge="web-cf" points="87,67 87,88 140,88 140,104" marker-end="url(#mk-ink)"/><polyline class="d-arrow" data-edge="app-cf" points="252,67 252,88 200,88 200,104" marker-end="url(#mk-ink)"/><rect class="d-zone" x="5" y="190" width="330" height="200"/><text class="d-zl" x="17" y="210">GCP, provisionada com Terraform</text><g class="d-node" data-node="api"><rect class="d-box" x="90" y="225" width="160" height="52"/><text class="d-t" x="170.0" y="248.0" text-anchor="middle">API NestJS</text><text class="d-s" x="170.0" y="265.0" text-anchor="middle">réplicas no Swarm</text></g><polyline class="d-arrow" data-edge="cf-api" points="170,162 170,219" marker-end="url(#mk-ink)"/><g class="d-node" data-node="kc"><rect class="d-box" x="12" y="320" width="100" height="52"/><text class="d-t" x="62.0" y="343.0" text-anchor="middle">Keycloak</text><text class="d-s" x="62.0" y="360.0" text-anchor="middle">SSO</text></g><g class="d-node" data-node="pg"><rect class="d-box" x="120" y="320" width="100" height="52"/><text class="d-t" x="170.0" y="343.0" text-anchor="middle">PostgreSQL</text><text class="d-s" x="170.0" y="360.0" text-anchor="middle">Cloud SQL</text></g><g class="d-node" data-node="redis"><rect class="d-box" x="228" y="320" width="100" height="52"/><text class="d-t" x="278.0" y="343.0" text-anchor="middle">Redis</text><text class="d-s" x="278.0" y="360.0" text-anchor="middle">cache</text></g><polyline class="d-arrow" data-edge="api-kc" points="125,277 72,314" marker-end="url(#mk-ink)"/><polyline class="d-arrow" data-edge="api-pg" points="170,277 170,314" marker-end="url(#mk-ink)"/><polyline class="d-arrow" data-edge="api-redis" points="215,277 268,314" marker-end="url(#mk-ink)"/><text class="d-n" x="10" y="414" text-anchor="start">login único entregue em 14 dias</text></svg></div>
+        <aside class="log" aria-labelledby="log-t">
+          <div class="log-head"><span id="log-t">Registro da requisição</span><span class="log-count"></span></div>
+          <ol aria-live="polite"><li class="empty">Rode uma requisição para ver cada etapa aparecer aqui, na ordem em que acontece no sistema da plataforma em que trabalho hoje.</li></ol>
+          <button type="button" class="run">Rodar uma requisição</button>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="sobre" aria-labelledby="sobre-t">
+    <div class="wrap about">
+      <div class="about-text">
+        <h2 id="sobre-t">Como eu trabalho</h2>
+        <p>Comecei numa empresa de jogos Web3 em São Paulo e passei por frontend, backend e infraestrutura até virar referência técnica do time. Hoje cuido do backend e da infraestrutura de uma plataforma usada por redes públicas de ensino.</p>
+        <p>Antes de mudar código, eu meço. Antes de confiar num dado, consulto o banco. Quando tomo uma decisão que alguém vai questionar daqui a seis meses, escrevo um registro curto com o contexto, a alternativa descartada e o motivo. Uso IA todos os dias, e o que entra no código é decidido por teste e revisão.</p>
+        <p><a class="cta" href="heron-amaral-curriculo.pdf">Baixar o currículo completo em PDF</a></p>
+      </div>
+      <figure class="portrait">
+        <img src="foto.jpeg" alt="Foto de Heron Oliveira Amaral" width="800" height="1000" loading="lazy" decoding="async">
+        <figcaption>Heron Oliveira Amaral, Belém, PA</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="casos" aria-labelledby="casos-t">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="casos-t">Estudos de caso</h2>
+        <div class="car-ctrl" data-for="car-casos"><button type="button" class="car-btn" data-dir="-1" aria-label="Caso anterior"><svg viewBox="0 0 20 20" aria-hidden="true"><polyline points="13,4 7,10 13,16"/></svg></button><span class="car-count" aria-live="polite"></span><button type="button" class="car-btn" data-dir="1" aria-label="Próximo caso"><svg viewBox="0 0 20 20" aria-hidden="true"><polyline points="7,4 13,10 7,16"/></svg></button></div>
+      </div>
+      <p class="intro">Quatro decisões reais contadas como replay: percorra os marcos para ver o sistema mudar do problema ao resultado. Dados de clientes e detalhes internos foram omitidos.</p>
+      <ol class="car-tabs" data-for="car-casos" aria-label="Ir para o caso"><li><a href="#caso-sso">Login único</a></li><li><a href="#caso-email">Vínculo por e-mail</a></li><li><a href="#caso-carga">Teste de carga</a></li><li><a href="#caso-ranking">Ranking em Redis</a></li></ol>
+      <div class="carousel" id="car-casos" role="region" aria-roledescription="carrossel" aria-label="Estudos de caso" tabindex="0">
+      <article class="replay slide" id="caso-sso" aria-roledescription="slide" aria-label="1 de 4">
+        <header class="replay-head">
+          <div><h3>Login único com Keycloak em 14 dias</h3><p class="meta">Plataforma SaaS de ensino, backend</p></div>
+          <button type="button" class="zoom-btn">Ampliar desenho</button>
+        </header>
+        <figure class="replay-fig"><svg class="replay-svg state-3" viewBox="0 0 760 340" role="img" aria-labelledby="rt-0"><title id="rt-0">Login único com Keycloak: dos logins próprios à fachada com migração no primeiro acesso</title><g class="r-node "><rect class="r-box" x="20" y="140" width="160" height="62"/><text class="r-t" x="100.0" y="167.0" text-anchor="middle">Clientes</text><text class="r-s" x="100.0" y="188.0" text-anchor="middle">web e mobile</text></g><polyline class="r-arrow" points="180,171 224,171" marker-end="url(#mk-ink)"/><g class="r-node n-prob off" data-show="0 1"><rect class="r-box" x="230" y="140" width="180" height="62"/><text class="r-t" x="320.0" y="167.0" text-anchor="middle">API NestJS</text><text class="r-s" x="320.0" y="188.0" text-anchor="middle">login próprio</text></g><g class="r-node " data-show="2 3"><rect class="r-box" x="230" y="140" width="180" height="62"/><text class="r-t" x="320.0" y="167.0" text-anchor="middle">API NestJS</text><text class="r-s" x="320.0" y="188.0" text-anchor="middle">fachada de login</text></g><g class="r-node "><rect class="r-box" x="230" y="266" width="180" height="62"/><text class="r-t" x="320.0" y="293.0" text-anchor="middle">Base legada</text><text class="r-s" x="320.0" y="314.0" text-anchor="middle">usuários e senhas</text></g><polyline class="r-arrow off" data-show="0 1" points="320,202 320,260" marker-end="url(#mk-ink)"/><g class="r-node n-new" data-show="2 3"><rect class="r-box" x="450" y="140" width="170" height="62"/><text class="r-t" x="535.0" y="167.0" text-anchor="middle">Keycloak</text><text class="r-s" x="535.0" y="188.0" text-anchor="middle">intermediador</text></g><polyline class="r-arrow" data-show="2 3" points="410,171 444,171" marker-end="url(#mk-ink)"/><polyline class="r-arrow r-dash" data-show="2 3" points="410,297 535,297 535,208" marker-end="url(#mk-ink)"/><g class="r-node " data-show="3"><rect class="r-box" x="650" y="60" width="100" height="56"/><text class="r-t" x="700.0" y="84.0" text-anchor="middle">Secretaria</text><text class="r-s" x="700.0" y="105.0" text-anchor="middle">realm</text></g><g class="r-node " data-show="3"><rect class="r-box" x="650" y="226" width="100" height="56"/><text class="r-t" x="700.0" y="250.0" text-anchor="middle">Escolas</text><text class="r-s" x="700.0" y="271.0" text-anchor="middle">realm</text></g><polyline class="r-arrow" data-show="3" points="620,160 635,160 635,88 644,88" marker-end="url(#mk-ink)"/><polyline class="r-arrow" data-show="3" points="620,182 635,182 635,254 644,254" marker-end="url(#mk-ink)"/><text class="r-ev off" data-show="1" x="440" y="70" text-anchor="start"><tspan x="440" dy="0">edital: login único em 14 dias,</tspan><tspan x="440" dy="20">sem quebrar nenhum cliente</tspan></text><text class="r-ev off" data-show="2" x="230" y="110" text-anchor="start"><tspan x="230" dy="0">a fachada mantém o contrato dos clientes</tspan></text><text class="r-ev" data-show="3" x="20" y="270" text-anchor="start"><tspan x="20" dy="0">migração no primeiro login,</tspan><tspan x="20" dy="20">sem reset de senha</tspan></text></svg></figure>
+        <div class="timeline" role="group" aria-label="Marcos do caso"><span class="fill" aria-hidden="true"></span><div><button type="button" data-step="0">Antes</button></div><div><button type="button" data-step="1">Problema</button></div><div><button type="button" data-step="2">Decisão</button></div><div><button type="button" data-step="3">Depois</button></div></div>
+        <ol class="narr-src"><li>Cada cliente fazia login contra a API, que validava senhas numa base própria da plataforma.</li><li>Um edital passou a exigir login único, com 14 dias de prazo e sem poder quebrar os clientes web e mobile já em produção.</li><li>A decisão: colocar o Keycloak como intermediador e manter na API uma fachada com o mesmo contrato de login.</li><li>Secretaria e escolas ficaram em realms separados, e cada usuário migra para o Keycloak no primeiro login, sem reset de senha em massa.</li></ol>
+        <p class="narration" aria-live="polite"></p>
+        <div class="replay-controls">
+          <button type="button" class="play">Assistir</button>
+          <button type="button" class="prev">Marco anterior</button>
+          <button type="button" class="next">Próximo marco</button>
+        </div>
+        <p class="summary">Entregue dentro do prazo do edital. A auditoria do login antigo feita no caminho encontrou uma falha de acesso indevido entre perfis, corrigida antes da troca.</p>
+      </article>
+      <article class="replay slide" id="caso-email" aria-roledescription="slide" aria-label="2 de 4">
+        <header class="replay-head">
+          <div><h3>Vincular contas por e-mail sem confiar no campo de e-mail</h3><p class="meta">Plataforma SaaS de ensino, backend</p></div>
+          <button type="button" class="zoom-btn">Ampliar desenho</button>
+        </header>
+        <figure class="replay-fig"><svg class="replay-svg state-3" viewBox="0 0 760 340" role="img" aria-labelledby="rt-1"><title id="rt-1">Vínculo de contas por e-mail: da busca ingênua à regra em quatro passos</title><g class="r-node "><rect class="r-box" x="20" y="140" width="160" height="62"/><text class="r-t" x="100.0" y="167.0" text-anchor="middle">E-mail Google</text><text class="r-s" x="100.0" y="188.0" text-anchor="middle">login social</text></g><polyline class="r-arrow" points="180,171 234,171" marker-end="url(#mk-ink)"/><g class="r-node  off" data-show="0 1"><rect class="r-box" x="240" y="140" width="200" height="62"/><text class="r-t" x="340.0" y="167.0" text-anchor="middle">Busca por e-mail</text><text class="r-s" x="340.0" y="188.0" text-anchor="middle">primeiro que bater</text></g><g class="r-node n-new" data-show="2 3"><rect class="r-box" x="240" y="50" width="240" height="170"/><text class="r-t" x="256" y="80">Regra de resolução</text><text class="r-s" x="256" y="112"><tspan class="r-num">1</tspan>  normalizar</text><text class="r-s" x="256" y="140"><tspan class="r-num">2</tspan>  descartar sentinelas</text><text class="r-s" x="256" y="168"><tspan class="r-num">3</tspan>  dono do e-mail</text><text class="r-s" x="256" y="196"><tspan class="r-num">4</tspan>  desempate por contagem</text></g><polyline class="r-arrow off" data-show="0 1" points="440,171 514,171" marker-end="url(#mk-ink)"/><polyline class="r-arrow" data-show="2 3" points="480,135 514,135" marker-end="url(#mk-ink)"/><g class="r-node  off" data-show="0"><rect class="r-box" x="520" y="140" width="210" height="62"/><text class="r-t" x="625.0" y="167.0" text-anchor="middle">Usuário</text><text class="r-s" x="625.0" y="188.0" text-anchor="middle">vinculado</text></g><g class="r-node n-prob off" data-show="1"><rect class="r-box" x="520" y="140" width="210" height="62"/><text class="r-t" x="625.0" y="167.0" text-anchor="middle">Aluno</text><text class="r-s" x="625.0" y="188.0" text-anchor="middle">conta errada</text></g><g class="r-node n-ok" data-show="2 3"><rect class="r-box" x="520" y="104" width="210" height="62"/><text class="r-t" x="625.0" y="131.0" text-anchor="middle">Responsável</text><text class="r-s" x="625.0" y="152.0" text-anchor="middle">a própria conta</text></g><text class="r-ev off" data-show="1" x="240" y="258" text-anchor="start"><tspan x="240" dy="0">o e-mail do responsável estava</tspan><tspan x="240" dy="20">no cadastro do aluno</tspan></text><text class="r-ev off" data-show="2" x="240" y="258" text-anchor="start"><tspan x="240" dy="0">escrita depois de consultar</tspan><tspan x="240" dy="20">os dados reais</tspan></text><text class="r-ev" data-show="3" x="520" y="210" text-anchor="start"><tspan x="520" dy="0">responsável nunca resolve</tspan><tspan x="520" dy="20">para o cadastro de uma criança</tspan></text></svg></figure>
+        <div class="timeline" role="group" aria-label="Marcos do caso"><span class="fill" aria-hidden="true"></span><div><button type="button" data-step="0">Antes</button></div><div><button type="button" data-step="1">Problema</button></div><div><button type="button" data-step="2">Decisão</button></div><div><button type="button" data-step="3">Depois</button></div></div>
+        <ol class="narr-src"><li>O plano óbvio: quando o login com Google chega, procurar um cadastro com o mesmo e-mail e vincular.</li><li>Os dados reais mostraram o risco: muitos e-mails eram texto de preenchimento, e o e-mail do responsável aparecia no cadastro do aluno.</li><li>A decisão: uma regra em quatro passos, escrita depois de consultar o banco, que prioriza quem tem o e-mail como próprio.</li><li>A conta de um responsável nunca resolve para o cadastro de uma criança, e quem teve o e-mail copiado em várias fichas entra como ele mesmo.</li></ol>
+        <p class="narration" aria-live="polite"></p>
+        <div class="replay-controls">
+          <button type="button" class="play">Assistir</button>
+          <button type="button" class="prev">Marco anterior</button>
+          <button type="button" class="next">Próximo marco</button>
+        </div>
+        <p class="summary">A regra normaliza o e-mail, descarta valores de preenchimento, procura quem tem aquele e-mail como próprio e só então desempata por contagem.</p>
+      </article>
+      <article class="replay slide" id="caso-carga" aria-roledescription="slide" aria-label="3 de 4">
+        <header class="replay-head">
+          <div><h3>O teste de carga apontou para o código, não para a máquina</h3><p class="meta">Plataforma SaaS de ensino, desempenho</p></div>
+          <button type="button" class="zoom-btn">Ampliar desenho</button>
+        </header>
+        <figure class="replay-fig"><svg class="replay-svg state-3" viewBox="0 0 760 340" role="img" aria-labelledby="rt-2"><title id="rt-2">Teste de carga: da hipótese de falta de máquina aos gargalos no código</title><g class="r-node n-new" data-show="2 3"><rect class="r-box" x="20" y="140" width="140" height="62"/><text class="r-t" x="90.0" y="167.0" text-anchor="middle">k6</text><text class="r-s" x="90.0" y="188.0" text-anchor="middle">rampa de usuários</text></g><polyline class="r-arrow" data-show="2 3" points="160,171 204,171" marker-end="url(#mk-ink)"/><g class="r-node n-hot"><rect class="r-box" x="210" y="140" width="160" height="62"/><text class="r-t" x="290.0" y="177.0" text-anchor="middle">API NestJS</text></g><g class="r-node n-hot"><rect class="r-box" x="405" y="140" width="165" height="62"/><text class="r-t" x="487.5" y="167.0" text-anchor="middle">Interceptor</text><text class="r-s" x="487.5" y="188.0" text-anchor="middle">auditoria</text></g><g class="r-node n-hot"><rect class="r-box" x="605" y="140" width="145" height="62"/><text class="r-t" x="677.5" y="177.0" text-anchor="middle">PostgreSQL</text></g><polyline class="r-arrow" points="370,171 399,171" marker-end="url(#mk-ink)"/><polyline class="r-arrow" points="570,171 599,171" marker-end="url(#mk-ink)"/><text class="r-ev off" data-show="1" x="210" y="100" text-anchor="start"><tspan x="210" dy="0">pedido no ar: mais máquina</tspan></text><text class="r-ev" data-show="3" x="405" y="100" text-anchor="start"><tspan x="405" dy="0">custo extra em toda requisição</tspan></text><text class="r-ev" data-show="3" x="210" y="240" text-anchor="start"><tspan x="210" dy="0">saturação de CPU cedo</tspan></text><text class="r-ev" data-show="3" x="750" y="240" text-anchor="end"><tspan x="750" dy="0">consultas N+1</tspan></text></svg></figure>
+        <div class="timeline" role="group" aria-label="Marcos do caso"><span class="fill" aria-hidden="true"></span><div><button type="button" data-step="0">Antes</button></div><div><button type="button" data-step="1">Problema</button></div><div><button type="button" data-step="2">Decisão</button></div><div><button type="button" data-step="3">Depois</button></div></div>
+        <ol class="narr-src"><li>A plataforma atendia as redes de ensino com uma API NestJS, um interceptor de auditoria e o PostgreSQL.</li><li>A sensação no time era de que faltava máquina, mas ninguém sabia em que carga o sistema começava a degradar.</li><li>A decisão: medir antes de escalar, com um teste de carga em k6 contra produção, numa janela controlada.</li><li>A saturação apareceu cedo e as causas estavam no código: consultas N+1 e um interceptor caro em toda requisição.</li></ol>
+        <p class="narration" aria-live="polite"></p>
+        <div class="replay-controls">
+          <button type="button" class="play">Assistir</button>
+          <button type="button" class="prev">Marco anterior</button>
+          <button type="button" class="next">Próximo marco</button>
+        </div>
+        <p class="summary">O relatório virou um plano de correção priorizado em vez de um pedido de orçamento para mais máquina.</p>
+      </article>
+      <article class="replay slide" id="caso-ranking" aria-roledescription="slide" aria-label="4 de 4">
+        <header class="replay-head">
+          <div><h3>Ranking de jogo: de Lambda para Redis</h3><p class="meta">Empresa de jogos Web3, backend</p></div>
+          <button type="button" class="zoom-btn">Ampliar desenho</button>
+        </header>
+        <figure class="replay-fig"><svg class="replay-svg state-3" viewBox="0 0 760 340" role="img" aria-labelledby="rt-3"><title id="rt-3">Ranking do jogo: do recálculo em Lambda ao sorted set no Redis</title><g class="r-node "><rect class="r-box" x="20" y="140" width="150" height="62"/><text class="r-t" x="95.0" y="167.0" text-anchor="middle">Pontuação</text><text class="r-s" x="95.0" y="188.0" text-anchor="middle">fim da partida</text></g><g class="r-node n-prob off" data-show="0 1 2" data-dim="2"><rect class="r-box" x="290" y="40" width="190" height="62"/><text class="r-t" x="385.0" y="67.0" text-anchor="middle">AWS Lambda</text><text class="r-s" x="385.0" y="88.0" text-anchor="middle">recalcula tudo</text></g><g class="r-node  off" data-show="0 1 2" data-dim="2"><rect class="r-box" x="590" y="40" width="150" height="62"/><text class="r-t" x="665.0" y="77.0" text-anchor="middle">Banco</text></g><g class="r-node "><rect class="r-box" x="590" y="236" width="150" height="62"/><text class="r-t" x="665.0" y="263.0" text-anchor="middle">Ranking</text><text class="r-s" x="665.0" y="284.0" text-anchor="middle">lido pelo jogo</text></g><g class="r-node n-new" data-show="2 3"><rect class="r-box" x="290" y="236" width="190" height="62"/><text class="r-t" x="385.0" y="263.0" text-anchor="middle">Redis</text><text class="r-s" x="385.0" y="284.0" text-anchor="middle">sorted set</text></g><polyline class="r-arrow off" data-show="0 1 2" data-dim="2" points="170,160 230,160 230,71 284,71" marker-end="url(#mk-ink)"/><polyline class="r-arrow off" data-show="0 1 2" data-dim="2" points="480,71 584,71" marker-end="url(#mk-ink)"/><polyline class="r-arrow off" data-show="0 1" points="665,102 665,230" marker-end="url(#mk-ink)"/><polyline class="r-arrow" data-show="2 3" points="170,182 230,182 230,267 284,267" marker-end="url(#mk-ink)"/><polyline class="r-arrow" data-show="3" points="480,267 584,267" marker-end="url(#mk-ink)"/><text class="r-ev off" data-show="1" x="300" y="140" text-anchor="start"><tspan x="300" dy="0">a cada partida, o ranking</tspan><tspan x="300" dy="20">inteiro é recalculado</tspan></text><text class="r-ev off" data-show="2" x="300" y="140" text-anchor="start"><tspan x="300" dy="0">a ordem é mantida</tspan><tspan x="300" dy="20">a cada pontuação nova</tspan></text><text class="r-ev" data-show="3" x="300" y="140" text-anchor="start"><tspan x="300" dy="0">leitura direta do topo,</tspan><tspan x="300" dy="20">cerca de US$ 300 a menos por mês</tspan></text></svg></figure>
+        <div class="timeline" role="group" aria-label="Marcos do caso"><span class="fill" aria-hidden="true"></span><div><button type="button" data-step="0">Antes</button></div><div><button type="button" data-step="1">Problema</button></div><div><button type="button" data-step="2">Decisão</button></div><div><button type="button" data-step="3">Depois</button></div></div>
+        <ol class="narr-src"><li>Cada pontuação disparava uma função Lambda que recalculava o ranking inteiro a partir do banco.</li><li>O custo crescia junto com o número de jogadores: mais partidas, mais recálculos completos.</li><li>A decisão: trocar o recálculo por sorted sets no Redis, que mantêm a ordem a cada pontuação nova.</li><li>O ranking passou a ser lido direto do Redis, atualizado na hora, com cerca de US$ 300 a menos por mês.</li></ol>
+        <p class="narration" aria-live="polite"></p>
+        <div class="replay-controls">
+          <button type="button" class="play">Assistir</button>
+          <button type="button" class="prev">Marco anterior</button>
+          <button type="button" class="next">Próximo marco</button>
+        </div>
+        <p class="summary">Cada pontuação entra no sorted set e o topo do ranking é lido direto, sem recálculo.</p>
+      </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projetos" aria-labelledby="projetos-t">
+    <div class="wrap">
+      <h2 id="projetos-t">Projetos com código aberto</h2>
+      <p class="intro">Código público no <a href="https://github.com/heronoa">GitHub</a>. Os de 2024 foram escritos como estudo, sem assistência de IA.</p>
+      <ul class="filters" aria-label="Filtrar projetos"><li><button type="button" data-filter="todos" aria-pressed="true">Todos</button></li><li><button type="button" data-filter="nestjs" aria-pressed="false">NestJS</button></li><li><button type="button" data-filter="tempo-real" aria-pressed="false">Tempo real</button></li><li><button type="button" data-filter="filas" aria-pressed="false">Filas e rotinas</button></li><li><button type="button" data-filter="jogos" aria-pressed="false">Jogos</button></li></ul>
+      <div class="servers-head" aria-hidden="true"><span>Projeto</span><span>Descrição</span><span>Stack</span><span>Ano</span></div>
+      <ul class="servers">
+        <li class="server" data-tags="nestjs testes">
+          <div class="s-name"><a href="https://github.com/heronoa/kanban-api">kanban-api</a><span class="s-kind">API REST</span></div>
+          <p class="s-desc">API de quadro Kanban em casos de uso e repositórios, com JWT e papéis, Swagger e CI que roda testes de integração contra um PostgreSQL real antes do deploy. <span class="s-origin">Nasceu como desafio técnico de um processo seletivo e foi o código que me levou à vaga.</span></p>
+          <p class="s-stack">NestJS, Prisma, PostgreSQL, GitHub Actions</p>
+          <p class="s-year">2025</p>
+        </li>
+        <li class="server" data-tags="nestjs filas">
+          <div class="s-name"><a href="https://github.com/heronoa/ait-manager">ait-manager</a><span class="s-kind">API e filas</span></div>
+          <p class="s-desc">API para gestão de autos de infração de trânsito com produtor e consumidor de filas SQS. <span class="s-origin">Escrito como desafio técnico de um processo seletivo.</span></p>
+          <p class="s-stack">NestJS, Prisma, PostgreSQL, AWS SQS</p>
+          <p class="s-year">2024</p>
+        </li>
+        <li class="server" data-tags="tempo-real jogos">
+          <div class="s-name"><a href="https://github.com/heronoa/turnbased-pvp-colyseus">turnbased-pvp-colyseus</a><span class="s-kind">Tempo real</span></div>
+          <p class="s-desc">Servidor de batalha por turnos em tempo real, com matchmaking e um bot que entra se ninguém aparecer em 15 segundos. Cliente em Vue 3 com testes em Cypress. <span class="s-origin">Escrito para estudar servidores de jogo em tempo real.</span></p>
+          <p class="s-stack">Node.js, Colyseus, WebSocket, Prisma</p>
+          <p class="s-year">2024</p>
+        </li>
+        <li class="server" data-tags="filas">
+          <div class="s-name"><a href="https://github.com/heronoa/payments-api">payments-api</a><span class="s-kind">API e rotinas</span></div>
+          <p class="s-desc">API de cobranças com cálculo de juros, jobs agendados, upload de comprovantes para o S3 e avisos por e-mail e WhatsApp. <span class="s-origin">Escrito para estudar rotinas agendadas e integrações de mensagem.</span></p>
+          <p class="s-stack">Express, MongoDB, AWS S3</p>
+          <p class="s-year">2024</p>
+        </li>
+      </ul>
+      <p class="servers-empty" hidden>Nenhum projeto com esse filtro.</p>
+    </div>
+  </section>
+
+  <section class="section" id="experiencia" aria-labelledby="experiencia-t">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="experiencia-t">Experiência</h2>
+        <div class="car-ctrl" data-for="strip-exp"><button type="button" class="car-btn" data-dir="-1" aria-label="Período anterior"><svg viewBox="0 0 20 20" aria-hidden="true"><polyline points="13,4 7,10 13,16"/></svg></button><button type="button" class="car-btn" data-dir="1" aria-label="Próximo período"><svg viewBox="0 0 20 20" aria-hidden="true"><polyline points="7,4 13,10 7,16"/></svg></button></div>
+      </div>
+      <ol class="strip seasons" id="strip-exp" role="region" aria-label="Experiência, do mais recente ao mais antigo" tabindex="0">
+        <li class="season">
+          <p class="when">09/2025 até hoje</p>
+          <h3>Backend Pleno</h3>
+          <p class="org">Plataforma SaaS de gestão para redes públicas de ensino</p>
+          <ul><li>Login único com Keycloak em 14 dias, exigido por edital, sem quebrar nenhum cliente.</li><li>Auditoria do login existente, com uma falha de IDOR encontrada e corrigida via hotfix.</li><li>Teste de carga com k6 que levou o gargalo até consultas N+1 e um interceptor de auditoria.</li><li>Suíte de 110 testes e2e (cerca de 75% de cobertura) e estratégia de pirâmide de testes.</li><li>Infraestrutura em Terraform na GCP, com Workload Identity Federation, state remoto com lock, Cloudflare Access e alertas no Grafana.</li></ul>
+        </li>
+        <li class="season">
+          <p class="when">em andamento</p>
+          <h3>Backend e infraestrutura, autônomo</h3>
+          <p class="org">Projeto para um cliente sob acordo de confidencialidade</p>
+          <ul><li>Autenticação por código único (OTP) em NestJS e Redis, com WhatsApp e SMS, migrando para geração própria no backend.</li><li>Infraestrutura on-premises com Proxmox, disco criptografado, NAS em RAID 1, backup criptografado com cópia externa e acesso remoto via Tailscale.</li></ul>
+        </li>
+        <li class="season">
+          <p class="when">04/2022 a 09/2025</p>
+          <h3>Desenvolvedor Full Stack, de júnior a pleno</h3>
+          <p class="org">Empresa de jogos e produtos Web3 em São Paulo</p>
+          <ul><li>APIs REST em Node.js, Express, Prisma, Mongoose e PostgreSQL, com JWT e login social.</li><li>Backend de um jogo de batalha por turnos em tempo real com WebSockets, Redis e PostgreSQL.</li><li>Plataforma DeWi com processamento assíncrono via mensageria AMQP (LavinMQ).</li><li>Ranking migrado de Lambda para Redis e cache que reduziu em 32% as consultas ao banco.</li><li>Passagem por frontend, backend e infraestrutura, até virar referência técnica do time.</li></ul>
+        </li>
+        <li class="season">
+          <p class="when">08/2024 a 01/2025</p>
+          <h3>Desenvolvedor Flutter</h3>
+          <p class="org">Aplicativo de verificação de identidade para um cliente sob acordo de confidencialidade</p>
+          <ul><li>Funcionalidades mobile com Provider e ViewModel, com testes unitários e de widget.</li><li>Avaliação e integração de verificação facial e prova de vida.</li><li>Problemas de arquitetura registrados como ADRs; a correção proposta foi adotada pelo time.</li></ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="habilidades" aria-labelledby="habilidades-t">
+    <div class="wrap">
+      <h2 id="habilidades-t">Habilidades</h2>
+      <dl class="skills">
+        <div><dt>Backend</dt><dd>Node.js, TypeScript, NestJS, Express, REST, WebSockets, JWT, OIDC, Keycloak</dd></div>
+        <div><dt>Dados</dt><dd>PostgreSQL, MongoDB, Redis, TypeORM, Prisma, Mongoose</dd></div>
+        <div><dt>Mensageria</dt><dd>AWS SQS, RabbitMQ, LavinMQ</dd></div>
+        <div><dt>Testes</dt><dd>Jest, Cypress, unitários, integração, e2e, k6</dd></div>
+        <div><dt>Infraestrutura</dt><dd>Docker, Docker Swarm, Terraform, Proxmox, GCP, AWS, Cloudflare, Grafana</dd></div>
+        <div><dt>CI/CD</dt><dd>GitHub Actions, GitLab CI, Woodpecker, Cloud Build</dd></div>
+        <div><dt>Formação</dt><dd>Tecnólogo em Análise e Desenvolvimento de Sistemas pela Estácio, conclusão prevista em 2027. Antes, CS50 e Zero To Mastery.</dd></div>
+        <div><dt>Idiomas</dt><dd>Português nativo, inglês avançado</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section contact" id="contato" aria-labelledby="contato-t">
+    <div class="wrap">
+      <div class="contact-box">
+        <h2 id="contato-t">Contato</h2>
+        <p>Para conversar sobre backend, infraestrutura ou algum projeto, o caminho mais rápido é o e-mail.</p>
+        <p><a class="cta cta-big" href="mailto:heron.amaral@gmail.com">heron.amaral@gmail.com</a></p>
+        <ul class="links">
+          <li><a href="https://github.com/heronoa">github.com/heronoa</a></li>
+          <li><a href="https://www.linkedin.com/in/heron-amaral-49a9a1179">linkedin.com/in/heron-amaral-49a9a1179</a></li>
+          <li><a href="heron-amaral-curriculo.pdf">Currículo em PDF</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="zoom" aria-labelledby="zoom-title">
+  <div class="zoom-bar">
+    <p id="zoom-title" class="zoom-title"></p>
+    <div class="zoom-actions">
+      <button type="button" data-zoom="-1" aria-label="Diminuir">−</button>
+      <button type="button" data-zoom="1" aria-label="Aumentar">+</button>
+      <button type="button" class="zoom-close">Fechar</button>
+    </div>
+  </div>
+  <div class="zoom-body"></div>
+</dialog>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Heron Oliveira Amaral, desenvolvedor backend em Belém, Pará.</p>
+    <p>Este site também é código aberto: <a href="https://github.com/heronoa/heron-portfolio">veja como ele foi feito</a>.</p>
+  </div>
+</footer>
+</body>
+</html>

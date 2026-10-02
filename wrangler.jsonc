@@ -1,0 +1,12 @@
+{
+  // Site 100% estático servido por Workers Static Assets (plano gratuito).
+  "name": "heron-portfolio",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./site",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "heronoa.com.br", "custom_domain": true }
+  ]
+}
