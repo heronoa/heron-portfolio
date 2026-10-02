@@ -69,7 +69,7 @@ FILTERS = [('todos', 'Todos'), ('nestjs', 'NestJS'), ('tempo-real', 'Tempo real'
 def project(p):
     return f'''
         <li class="server" data-tags="{p['tags']}">
-          <div class="s-name"><a href="{p['url']}">{e(p['name'])}</a><span class="s-kind">{e(p['kind'])}</span></div>
+          <div class="s-name"><a href="{p['url']}" target="_blank" rel="noopener noreferrer">{e(p['name'])}</a><span class="s-kind">{e(p['kind'])}</span></div>
           <p class="s-desc">{e(p['desc'])} <span class="s-origin">{e(p['origin'])}</span></p>
           <p class="s-stack">{e(p['stack'])}</p>
           <p class="s-year">{p['year']}</p>
@@ -217,7 +217,7 @@ def page(css_href='styles.css', js_head='<script src="theme.js"></script>', js_b
   <section class="section" id="projetos" aria-labelledby="projetos-t">
     <div class="wrap">
       <h2 id="projetos-t">Projetos com código aberto</h2>
-      <p class="intro">Código público no <a href="https://github.com/heronoa">GitHub</a>. Os de 2024 foram escritos como estudo, sem assistência de IA.</p>
+      <p class="intro">Código público no <a href="https://github.com/heronoa" target="_blank" rel="noopener noreferrer">GitHub</a>. Os de 2024 foram escritos como estudo, sem assistência de IA.</p>
       <ul class="filters" aria-label="Filtrar projetos">{filters}</ul>
       <div class="servers-head" aria-hidden="true"><span>Projeto</span><span>Descrição</span><span>Stack</span><span>Ano</span></div>
       <ul class="servers">{''.join(project(p) for p in PROJECTS)}
@@ -260,8 +260,8 @@ def page(css_href='styles.css', js_head='<script src="theme.js"></script>', js_b
         <p>Para conversar sobre backend, infraestrutura ou algum projeto, o caminho mais rápido é o e-mail.</p>
         <p><a class="cta cta-big" href="mailto:heron.amaral@gmail.com">heron.amaral@gmail.com</a></p>
         <ul class="links">
-          <li><a href="https://github.com/heronoa">github.com/heronoa</a></li>
-          <li><a href="https://www.linkedin.com/in/heron-amaral-49a9a1179">linkedin.com/in/heron-amaral-49a9a1179</a></li>
+          <li><a href="https://github.com/heronoa" target="_blank" rel="noopener noreferrer">github.com/heronoa</a></li>
+          <li><a href="https://www.linkedin.com/in/heron-amaral-49a9a1179" target="_blank" rel="noopener noreferrer">linkedin.com/in/heron-amaral-49a9a1179</a></li>
           <li><a href="{pdf}">Currículo em PDF</a></li>
         </ul>
       </div>
@@ -284,7 +284,7 @@ def page(css_href='styles.css', js_head='<script src="theme.js"></script>', js_b
 <footer class="footer">
   <div class="wrap">
     <p>Heron Oliveira Amaral, desenvolvedor backend em Belém, Pará.</p>
-    <p>Este site também é código aberto: <a href="https://github.com/heronoa/heron-portfolio">veja como ele foi feito</a>.</p>
+    <p>Este site também é código aberto: <a href="https://github.com/heronoa/heron-portfolio" target="_blank" rel="noopener noreferrer">veja como ele foi feito</a>.</p>
   </div>
 </footer>
 </body>
